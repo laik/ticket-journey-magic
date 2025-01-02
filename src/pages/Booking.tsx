@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { stations } from "../data/mockData";
-import Navigation from "../components/Navigation";
-import { useToast } from "../components/ui/use-toast";
+import { stations, trainInfo, bookingGuidelines } from "../data/mockData";
+import { useToast } from "../hooks/use-toast";
 
 const Booking = () => {
   const [formData, setFormData] = useState({
@@ -26,9 +25,28 @@ const Booking = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-20">
-      <div className="container mx-auto px-4 py-8">
-        <div className="max-w-md mx-auto bg-white rounded-lg shadow-md p-6 animate-fade-in">
+    <div className="min-h-screen bg-gray-50">
+      <div className="container mx-auto px-4 py-8 space-y-8">
+        {/* Train Info Section */}
+        <div className="bg-white rounded-lg shadow-md p-6 animate-fade-in">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Train Information</h2>
+          <div className="space-y-6">
+            <div>
+              <p className="text-gray-600">{trainInfo.description}</p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-gray-800 mb-2">Features</h3>
+              <ul className="list-disc list-inside space-y-2">
+                {trainInfo.features.map((feature, index) => (
+                  <li key={index} className="text-gray-600">{feature}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Booking Form */}
+        <div className="bg-white rounded-lg shadow-md p-6 animate-fade-in">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">Book Your Ticket</h2>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
@@ -100,8 +118,25 @@ const Booking = () => {
             </button>
           </form>
         </div>
+
+        {/* Guidelines Section */}
+        <div className="bg-white rounded-lg shadow-md p-6 animate-fade-in">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">Booking Guidelines</h2>
+          <ul className="space-y-4">
+            {bookingGuidelines.map((guideline, index) => (
+              <li
+                key={index}
+                className="flex items-start space-x-3 text-gray-600"
+              >
+                <span className="inline-block w-6 h-6 bg-primary text-white rounded-full flex-shrink-0 flex items-center justify-center text-sm">
+                  {index + 1}
+                </span>
+                <span>{guideline}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-      <Navigation />
     </div>
   );
 };

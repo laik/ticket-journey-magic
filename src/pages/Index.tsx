@@ -2,7 +2,6 @@ import { useState } from "react";
 import { trainTickets } from "../data/mockData";
 import type { TrainTicket } from "../data/mockData";
 import { useNavigate } from "react-router-dom";
-import Navigation from "../components/Navigation";
 
 const Index = () => {
   const [tickets] = useState<TrainTicket[]>(trainTickets);
@@ -10,7 +9,6 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Navigation />
       <div className="container mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold text-gray-900 mb-8">Available Train Tickets</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
