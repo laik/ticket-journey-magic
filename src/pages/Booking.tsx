@@ -26,8 +26,7 @@ const Booking = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Navigation />
+    <div className="min-h-screen bg-gray-50 pb-20">
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-md mx-auto bg-white rounded-lg shadow-md p-6 animate-fade-in">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">Book Your Ticket</h2>
@@ -102,6 +101,7 @@ const Booking = () => {
           </form>
         </div>
       </div>
+      <Navigation />
     </div>
   );
 };
